@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 
@@ -78,6 +78,37 @@ const team = [
     linkedin: 'https://linkedin.com/company/rastainfotech',
   },
 ]
+
+interface CompanyLogoProps {
+  company: {
+    name: string
+    font: string
+    logo: string
+  }
+}
+
+function PartnerLogo({ company }: CompanyLogoProps) {
+  const [imageFailed, setImageFailed] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
+
+  return (
+    <div className="shrink-0 flex items-center justify-center gap-3 px-8 py-5 rounded-xl border border-white/10 bg-[#0D1B2E] min-w-[200px] h-20 hover:border-white/20 hover:bg-[#112240] transition-all duration-300">
+      {!imageFailed && (
+        <img
+          src={company.logo}
+          alt={company.name}
+          className="h-8 w-auto object-contain"
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageFailed(true)}
+          style={{ display: imageLoaded ? 'block' : 'none' }}
+        />
+      )}
+      {(imageFailed || !imageLoaded) && (
+        <span className={company.font}>{company.name}</span>
+      )}
+    </div>
+  )
+}
 
 export default function About() {
   const ref = useRef(null)
@@ -458,20 +489,7 @@ export default function About() {
                   { name: 'Capgemini', font: 'font-light tracking-wide text-white text-xl', logo: 'https://logo.clearbit.com/capgemini.com' },
                 ]
               ].map((company, i) => (
-                <div
-                  key={i}
-                  className="shrink-0 flex items-center justify-center gap-3 px-8 py-5 rounded-xl border border-white/10 bg-[#0D1B2E] min-w-[200px] h-20 hover:border-white/20 hover:bg-[#112240] transition-all duration-300"
-                >
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="h-8 w-auto object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none'
-                    }}
-                  />
-                  <span className={company.font}>{company.name}</span>
-                </div>
+                <PartnerLogo key={i} company={company} />
               ))}
             </div>
           </div>
