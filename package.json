@@ -1,0 +1,41 @@
+{
+  "name": "rasta-infotech",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "ingest": "npx tsx --env-file=.env scripts/ingest-db.ts"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^8.0.0",
+    "bcryptjs": "^3.0.3",
+    "cohere-ai": "^8.0.0",
+    "framer-motion": "^12.38.0",
+    "groq-sdk": "^1.1.2",
+    "jose": "^6.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "leaflet": "^1.9.4",
+    "mongoose": "^9.4.1",
+    "next": "14.2.35",
+    "nodemailer": "^8.0.7",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.72.1",
+    "react-leaflet": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

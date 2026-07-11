@@ -1,0 +1,9 @@
+User message
+     ↓
+Cohere embeds the query (embed-english-light-v3.0)
+     ↓
+Cosine similarity against 29 knowledge chunks in MongoDB
+     ↓
+Top 4 most relevant chunks injected into system prompt
+     ↓
+Groq LLaMA 3.3 70B generates a grounded answer

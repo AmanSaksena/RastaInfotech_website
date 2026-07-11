@@ -1,0 +1,139 @@
+# ============================================================
+#  RASTA INFOTECH — Project Requirements
+#  Stack: Next.js 14 + MongoDB + Tailwind CSS + TypeScript
+# ============================================================
+
+
+# ------------------------------------------------------------
+# RUNTIME REQUIREMENTS
+# ------------------------------------------------------------
+Node.js       >= 18.x   (https://nodejs.org)
+npm           >= 9.x    (bundled with Node.js)
+MongoDB Atlas account   (https://www.mongodb.com/atlas)
+
+
+# ------------------------------------------------------------
+# INSTALLATION
+# ------------------------------------------------------------
+# 1. Clone / download the project folder
+# 2. Open a terminal in the project root
+# 3. Run:
+#       npm install
+# 4. Create a .env.local file (see Environment Variables below)
+# 5. Start the development server:
+#       npm run dev
+# 6. Open http://localhost:3000 in your browser
+
+
+# ------------------------------------------------------------
+# NPM DEPENDENCIES  (auto-installed via npm install)
+# ------------------------------------------------------------
+
+# Core Framework
+next@14.2.35              # Next.js App Router framework
+react@^18                 # UI library
+react-dom@^18             # React DOM renderer
+typescript@^5             # TypeScript language support
+
+# Database
+mongoose@^9.4.1           # MongoDB ODM for schema & queries
+
+# Authentication & Security
+bcryptjs@^3.0.3           # Password hashing
+jsonwebtoken@^9.0.3       # JWT token signing/verification
+jose@^6.2.3               # JWT verification in Edge/middleware
+
+# AI / RAG Chatbot
+cohere-ai@^8.0.0          # Text embedding generation (Cohere API)
+groq-sdk@^1.1.2           # LLM inference — LLaMA 3.3 70B (Groq API)
+
+# Email Notifications
+nodemailer@^8.0.7         # Transactional email via Gmail SMTP
+@types/nodemailer@^8.0.0  # TypeScript types for nodemailer
+
+# UI & Animations
+framer-motion@^12.38.0    # Page & component animations
+tailwindcss@^3.4.1        # Utility-first CSS framework
+leaflet@^1.9.4            # Interactive map (Leaflet.js)
+react-leaflet@^4.2.1      # React wrapper for Leaflet
+react-hook-form@^7.72.1   # Form state management & validation
+
+# Dev / Type Definitions
+@types/node@^20           # Node.js TypeScript types
+@types/react@^18          # React TypeScript types
+@types/react-dom@^18      # React DOM TypeScript types
+@types/bcryptjs@^2.4.6    # bcryptjs TypeScript types
+@types/jsonwebtoken@^9.0.10 # jsonwebtoken TypeScript types
+eslint@^8                 # Code linting
+eslint-config-next@14.2.35 # Next.js ESLint rules
+postcss@^8                # CSS processing (required by Tailwind)
+
+
+# ------------------------------------------------------------
+# EXTERNAL SERVICES REQUIRED
+# ------------------------------------------------------------
+
+# 1. MongoDB Atlas
+#    - Create a free cluster at https://www.mongodb.com/atlas
+#    - Whitelist your IP and get the connection string
+#    - Used for: all data (leads, clients, projects, tickets,
+#                job postings, job applications)
+
+# 2. Cohere API  (https://cohere.com)
+#    - Free tier available
+#    - Used for: generating text embeddings for the RAG chatbot
+
+# 3. Groq API  (https://console.groq.com)
+#    - Free tier available
+#    - Model used: llama-3.3-70b-versatile
+#    - Used for: LLM inference in the RAG chatbot
+
+# 4. Gmail Account with App Password
+#    - Enable 2-Factor Authentication on a Gmail account
+#    - Generate an App Password at:
+#      https://myaccount.google.com/apppasswords
+#    - Used for: sending job application status emails
+
+
+# ------------------------------------------------------------
+# ENVIRONMENT VARIABLES  (.env.local in project root)
+# ------------------------------------------------------------
+
+MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<dbname>
+
+COHERE_API_KEY=your_cohere_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
+
+JWT_SECRET=your_random_secret_string_here
+
+EMAIL_USER=aman.kr.saksena@gmail.com
+EMAIL_PASS=your_gmail_app_password_here
+
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+
+# ------------------------------------------------------------
+# BUILD FOR PRODUCTION
+# ------------------------------------------------------------
+# npm run build     # Compiles and optimises the app
+# npm run start     # Starts the production server
+
+
+# ------------------------------------------------------------
+# PROJECT STRUCTURE OVERVIEW
+# ------------------------------------------------------------
+# app/               — Next.js App Router pages & API routes
+#   api/             — Backend REST API endpoints
+#   admin/           — Admin panel pages (auth-protected)
+#   client-portal/   — Client dashboard (session-protected)
+#   careers/         — Public job listings page
+#   application-status/ — Public application tracker page
+#   blog/            — Blog / articles
+# backend/
+#   models/          — Mongoose schemas (MongoDB)
+#   lib/             — DB connection, mailer, embedding utils
+# components/
+#   layout/          — Navbar, Footer
+#   sections/        — Landing page sections
+#   admin/           — Admin shell / layout
+# public/            — Static assets
